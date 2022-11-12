@@ -1,0 +1,109 @@
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas (master)
+$ cd git basic-branching
+bash: cd: too many arguments
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas (master)
+$ git basic-branching
+git: 'basic-branching' is not a git command. See 'git --help'.
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas (master)
+$ cd basic-branching
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/basic-branching (master)
+$ ls
+README.md  setup.ps1  setup.sh*
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/basic-branching (master)
+$ source setup.sh
+Initialized empty Git repository in C:/Users/saile/katas/git-katas/basic-branching/exercise/.git/
+Successfully configured local username and email
+Successfully disable local GPG signing
+warning: in the working copy of 'dummy.txt', LF will be replaced by CRLF the next time Git touches it
+[master (root-commit) 2092944] dummy commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 dummy.txt
+Switched to a new branch 'second-branch'
+Switched to branch 'master'
+Successfully unset local username and email
+Successfully unset local GPG signing
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/basic-branching/exercise (master)
+$ ls
+dummy.txt
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/basic-branching/exercise (master)
+$ git branch
+* master
+  second-branch
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/basic-branching/exercise (master)
+$ git branch mybranch
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/basic-branching/exercise (master)
+$ git branch
+* master
+  mybranch
+  second-branch
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/basic-branching/exercise (master)
+$ git switch branch mybranch
+fatal: only one reference expected
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/basic-branching/exercise (master)
+$ git switch mybranch
+Switched to branch 'mybranch'
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/basic-branching/exercise (mybranch)
+$ git status
+On branch mybranch
+nothing to commit, working tree clean
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/basic-branching/exercise (mybranch)
+$ ls
+dummy.txt
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/basic-branching/exercise (mybranch)
+$ touch file.txt
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/basic-branching/exercise (mybranch)
+$ git add file.txt
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/basic-branching/exercise (mybranch)
+$ git commit
+[mybranch f666f3e] committed
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 file.txt
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/basic-branching/exercise (mybranch)
+$ git log --oneline --graph
+* f666f3e (HEAD -> mybranch) committed
+* 2092944 (second-branch, master) dummy commit
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/basic-branching/exercise (mybranch)
+$ git switch master
+Switched to branch 'master'
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/basic-branching/exercise (master)
+$ git log --oneline --graph
+* 2092944 (HEAD -> master, second-branch) dummy commit
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/basic-branching/exercise (master)
+$ touch file2.txt
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/basic-branching/exercise (master)
+$ git log --oneline --graph --all
+* f666f3e (mybranch) committed
+* 2092944 (HEAD -> master, second-branch) dummy commit
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/basic-branching/exercise (master)
+$ ls
+dummy.txt  file2.txt
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/basic-branching/exercise (master)
+$ git diff mybranch master
+diff --git a/file.txt b/file.txt
+deleted file mode 100644
+index e69de29..0000000
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/basic-branching/exercise (master)
+$

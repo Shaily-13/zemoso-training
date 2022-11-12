@@ -1,0 +1,65 @@
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/3-way-merge/exercise (master)
+$ git branch
+  greeting
+* master
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/3-way-merge/exercise (master)
+$ git switch greeting
+Switched to branch 'greeting'
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/3-way-merge/exercise (greeting)
+$ echo "hey there">greeting.txt
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/3-way-merge/exercise (greeting)
+$ git add greeting.txt
+warning: in the working copy of 'greeting.txt', LF will be replaced by CRLF the next time Git touches it
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/3-way-merge/exercise (greeting)
+$ git commit -m "committed"
+[greeting 3e31a17] committed
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/3-way-merge/exercise (greeting)
+$ git switch master
+Switched to branch 'master'
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/3-way-merge/exercise (master)
+$ touch README.md
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/3-way-merge/exercise (master)
+$ echo "this is a 3-way-merge">README.md
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/3-way-merge/exercise (master)
+$ cat README.md
+this is a 3-way-merge
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/3-way-merge/exercise (master)
+$ git log --oneline --graph --all
+* 3e31a17 (greeting) committed
+| * 6474285 (HEAD -> master) committed
+|/
+* 7f5d21c Add content to greeting.txt
+* 4492e12 Add file greeting.txt
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/3-way-merge/exercise (master)
+$ git diff branches
+fatal: ambiguous argument 'branches': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/3-way-merge/exercise (master)
+$ git diff master greeting
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/3-way-merge/exercise (master)
+$ git merge greeting master
+Merge made by the 'ort' strategy.
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/3-way-merge/exercise (master)
+$ git log --oneline --graph --all
+*   fbf5f0b (HEAD -> master) committed
+|\
+| * 3e31a17 (greeting) committed
+* | 6474285 committed
+|/
+* 7f5d21c Add content to greeting.txt
+* 4492e12 Add file greeting.txt

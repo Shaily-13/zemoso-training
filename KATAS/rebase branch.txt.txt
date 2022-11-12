@@ -1,0 +1,150 @@
+saile@LAPTOP-OMF15UU0 MINGW64 ~/git-katas (master)
+$ cd rebase-branch
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/git-katas/rebase-branch (master)
+$ git branch
+* master
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/git-katas/rebase-branch (master)
+$ git log
+commit 4db7563ce5ec8605526322312c59262ce527d870 (HEAD -> master, origin/sofusalbcommit 4db7563ce5ec8605526322312c59262ce527d870 (HEAD -> master, origin/sofusalb
+ertsen-patch-1, origin/master, origin/HEAD)
+Author: Jan Krag <jan.krag@eficode.com>
+Date:   Wed Oct 26 08:54:03 2022 +0200
+
+    Update README.md
+
+commit 3b089416eeb4c2d80c4f2aaef815114dff33f9bb
+Author: Jan Krag <jan.krag@eficode.com>
+Date:   Tue Oct 25 00:11:11 2022 +0300
+
+    More improvements to submodules README
+
+    * Formatting
+    * Add comment about git submodule update --init
+
+commit 1796d04a966465cdd3f243d816964ff946d1b8c7
+Author: Jan Krag <jan.krag@eficode.com>
+Date:   Mon Oct 24 23:44:27 2022 +0300
+
+    Cleanup of submodules kata README
+
+commit 8f8ea88e47f7f29983783c54fdce4daa872bc0fc
+
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/git-katas/rebase-branch (master)
+$
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/git-katas/rebase-branch (master)
+$ git branch uppercase
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/git-katas/rebase-branch (master)
+$ git checkout -b uppercase
+fatal: a branch named 'uppercase' already exists
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/git-katas/rebase-branch (master)
+$ git switch uppercase
+Switched to branch 'uppercase'
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/git-katas/rebase-branch (uppercase)
+$ git diff log
+fatal: ambiguous argument 'log': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/git-katas/rebase-branch (uppercase)
+$ git log
+commit 4db7563ce5ec8605526322312c59262ce527d870 (HEAD -> uppercase, origin/sofusalbertsen-patch-1, origin/master, origin/HEAD, master)
+Author: Jan Krag <jan.krag@eficode.com>
+Date:   Wed Oct 26 08:54:03 2022 +0200
+
+    Update README.md
+
+commit 3b089416eeb4c2d80c4f2aaef815114dff33f9bb
+Author: Jan Krag <jan.krag@eficode.com>
+Date:   Tue Oct 25 00:11:11 2022 +0300
+
+    More improvements to submodules README
+
+    * Formatting
+    * Add comment about git submodule update --init
+
+commit 1796d04a966465cdd3f243d816964ff946d1b8c7
+Author: Jan Krag <jan.krag@eficode.com>
+Date:   Mon Oct 24 23:44:27 2022 +0300
+
+    Cleanup of submodules kata README
+
+commit 8f8ea88e47f7f29983783c54fdce4daa872bc0fc
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/git-katas/rebase-branch (uppercase)
+$ git rebase master
+Current branch uppercase is up to date.
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/git-katas/rebase-branch (uppercase)
+$ git graph --oneline --all
+git: 'graph' is not a git command. See 'git --help'.
+
+The most similar commands are
+        branch
+        grep
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/git-katas/rebase-branch (uppercase)
+$ git log --oneline --graph --all
+* 4db7563 (HEAD -> uppercase, origin/sofusalbertsen-patch-1, origin/master, origin/HEAD, master) Update README.md
+* 3b08941 More improvements to submodules README
+* 1796d04 Cleanup of submodules kata README
+* 8f8ea88 fixup! Rewrite and complete kata steps for image exif diff
+* cbcb04e Rewrite and complete kata steps for image exif diff
+* fe59efb Added resized mario image for git-attributes kata
+* 83c2c02 Fine tune linting of LFS readme
+* d04ba8e Improve wording in ff-merge README to be more correct
+* 7faef20 Add useful commands for submodules kata
+* 56dc2bd Remove remaining --decorate flags in subtree kata
+* fe32ac5 UPDATE master-based-workflow, remove --decorate flag
+* 83fbaa9 UPDATE basic-revert, remove --decorate flag
+* dccb79a UPDATE cherry-pick, remove --decorate flag
+* bb6bace Update LFS exercise (typos and formatting)
+* bddcbed Update README in cherry-pick exercise
+* ce3c715 Replace checkout with switch
+* f8bce11 Improve LFS kata instructions
+* a305be3 Maybe a more cross-platform way of creating large dummy file
+* 9efb895 Add Git LFS exercise
+*   aaf0885 Merge pull request #330 from eficode-academy/editorconfig
+|\
+| * fe39922 Add .editorconfig to keep content more clean
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/git-katas/rebase-branch (uppercase)
+$ git switch master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/git-katas/rebase-branch (master)
+$ git merge uppercase master
+Already up to date.
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/git-katas/rebase-branch (master)
+$ git log
+commit 4db7563ce5ec8605526322312c59262ce527d870 (HEAD -> master, origin/sofusalbertsen-patch-1, origin/master, origin/HEAD, uppercase)
+Author: Jan Krag <jan.krag@eficode.com>
+Date:   Wed Oct 26 08:54:03 2022 +0200
+
+    Update README.md
+
+commit 3b089416eeb4c2d80c4f2aaef815114dff33f9bb
+Author: Jan Krag <jan.krag@eficode.com>
+Date:   Tue Oct 25 00:11:11 2022 +0300
+
+    More improvements to submodules README
+
+    * Formatting
+    * Add comment about git submodule update --init
+
+commit 1796d04a966465cdd3f243d816964ff946d1b8c7
+Author: Jan Krag <jan.krag@eficode.com>
+Date:   Mon Oct 24 23:44:27 2022 +0300
+
+    Cleanup of submodules kata README
+
+commit 8f8ea88e47f7f29983783c54fdce4daa872bc0fc
+:

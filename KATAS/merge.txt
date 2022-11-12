@@ -1,0 +1,121 @@
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas (master)
+$ cd ff-merge
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/ff-merge (master)
+$ ls
+README.md  setup.ps1  setup.sh*
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/ff-merge (master)
+$ source setup.sh
+Initialized empty Git repository in C:/Users/saile/katas/git-katas/ff-merge/exercise/.git/
+[master (root-commit) 43f75a1] Add file greeting.txt
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 greeting.txt
+warning: in the working copy of 'greeting.txt', LF will be replaced by CRLF the next time Git touches it
+[master 082ba2d] Add content to greeting.txt
+ 1 file changed, 1 insertion(+)
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/ff-merge/exercise (master)
+$ ls
+greeting.txt
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/ff-merge/exercise (master)
+$ git branch feature/uppercase
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/ff-merge/exercise (master)
+$ git switch feature/uppercase
+Switched to branch 'feature/uppercase'
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/ff-merge/exercise (feature/uppercase)
+$ git branch
+* feature/uppercase
+  master
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/ff-merge/exercise (feature/uppercase)
+$ git status
+On branch feature/uppercase
+nothing to commit, working tree clean
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/ff-merge/exercise (feature/uppercase)
+$ echo "GREETING">greeting.txt
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/ff-merge/exercise (feature/uppercase)
+$ git add greeting.txt
+warning: in the working copy of 'greeting.txt', LF will be replaced by CRLF the next time Git touches it
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/ff-merge/exercise (feature/uppercase)
+$ git commit -m "committed"
+[feature/uppercase 86faa94] committed
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/ff-merge/exercise (feature/uppercase)
+$ git branch
+* feature/uppercase
+  master
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/ff-merge/exercise (feature/uppercase)
+$ git log -- oneline --graph --all
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/ff-merge/exercise (feature/uppercase)
+$ git log --oneline --graph --all
+* 86faa94 (HEAD -> feature/uppercase) committed
+* 082ba2d (master) Add content to greeting.txt
+* 43f75a1 Add file greeting.txt
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/ff-merge/exercise (feature/uppercase)
+$ git switch master
+Switched to branch 'master'
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/ff-merge/exercise (master)
+$ cat greeting.txt
+hello
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/ff-merge/exercise (master)
+$ git diff branches
+fatal: ambiguous argument 'branches': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/ff-merge/exercise (master)
+$ git diff branche
+fatal: ambiguous argument 'branche': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/ff-merge/exercise (master)
+$ git diff branch
+fatal: ambiguous argument 'branch': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/ff-merge/exercise (master)
+$ git diff master feature/uppercase
+diff --git a/greeting.txt b/greeting.txt
+index ce01362..1e4307a 100644
+--- a/greeting.txt
++++ b/greeting.txt
+@@ -1 +1 @@
+-hello
++GREETING
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/ff-merge/exercise (master)
+$ git merge braches
+merge: braches - not something we can merge
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/ff-merge/exercise (master)
+$ git merge master feature/uppercase
+Updating 082ba2d..86faa94
+Fast-forward
+ greeting.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/ff-merge/exercise (master)
+$ cat greeting.txt
+GREETING
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/ff-merge/exercise (master)
+$ git branch -d feature/uppercase
+Deleted branch feature/uppercase (was 86faa94).
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/ff-merge/exercise (master)
+$

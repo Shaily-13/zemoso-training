@@ -1,0 +1,68 @@
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/merge-conflict/exercise (master)
+$ git merge merge-conflict-branch1
+Auto-merging file.txt
+CONFLICT (add/add): Merge conflict in file.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/merge-conflict/exercise (master|MERGING)
+$ git status
+On branch master
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both added:      file.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/merge-conflict/exercise (master|MERGING)
+$ cat file.txt
+<<<<<<< HEAD
+This is an indispensable truth!
+=======
+This is a relevant fact
+>>>>>>> merge-conflict-branch1
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/merge-conflict/exercise (master|MERGING)
+$ vi file.txt
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/merge-conflict/exercise (master|MERGING)
+$ git status
+On branch master
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both added:      file.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/merge-conflict/exercise (master|MERGING)
+$ git add file.txt
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/merge-conflict/exercise (master|MERGING)
+$ git commit -m "committed"
+[master ba0ed2b] committed
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/merge-conflict/exercise (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/merge-conflict/exercise (master)
+$ git log --onelinee --graph
+fatal: unrecognized argument: --onelinee
+
+saile@LAPTOP-OMF15UU0 MINGW64 ~/katas/git-katas/merge-conflict/exercise (master)
+$ git log --oneline --graph
+*   ba0ed2b (HEAD -> master) committed
+|\
+| * f2816d7 (merge-conflict-branch1) add relevant fact
+* | c8f2c0e add indispensable truth!
+|/
+* ea62955 Add content to greeting.txt
+* e981b36 Add file greeting.txt
